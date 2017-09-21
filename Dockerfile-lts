@@ -1,6 +1,8 @@
 FROM jenkins/jenkins:lts
 MAINTAINER Analyser, analyser@gmail.com
 
+ARG user=jenkins
+
 USER root
 
 RUN apt-get update && \
