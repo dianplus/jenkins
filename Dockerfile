@@ -7,9 +7,10 @@ ARG TZ=Asia/Shanghai
 
 USER root
 
-COPY sources.list        /etc/apt/sources.list
+COPY sources.list /etc/apt/sources.list.d/debian.sources.list
 
-RUN apt-get update && \
+RUN rm -f /etc/apt/sources.list.d/debian.sources && \
+    apt-get update && \
     apt-get install -y --no-install-recommends tzdata && \
     rm -rf /var/lib/apt/lists/*
 
