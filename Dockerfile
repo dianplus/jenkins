@@ -10,12 +10,11 @@ USER root
 COPY sources.list        /etc/apt/sources.list
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        lib32stdc++6 lib32z1 tzdata && \
+    apt-get install -y --no-install-recommends tzdata && \
     rm -rf /var/lib/apt/lists/*
 
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && echo $TZ > /etc/timezone \
-    && dpkg-reconfigure --frontend noninteractive tzdata
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+    echo $TZ > /etc/timezone && \
+    dpkg-reconfigure --frontend noninteractive tzdata
 
 USER ${user}
