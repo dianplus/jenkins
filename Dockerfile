@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.514-jdk17
+FROM jenkins/jenkins:2.522-jdk17
 LABEL maintainer="Analyser <analyser@gmail.com>"
 
 ARG user=jenkins
