@@ -41,3 +41,7 @@ jobs:
           platforms: ${{ matrix.platforms }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ vars.ALIBABA_CLOUD_CR_HOSTNAME }}/dianplus/jenkins:${{ steps.extract_tag.outputs.image_tag }},${{ vars.ALIBABA_CLOUD_CR_HOSTNAME }}/dianplus/jenkins:latest
+          # Aliyun ACR rejects OCI attestation manifests ("unknown manifest class
+          # for application/vnd.oci.empty.v1+json") - keep the push to plain manifests
+          provenance: false
+          sbom: false
